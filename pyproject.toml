@@ -1,0 +1,26 @@
+[project]
+name = "template-fastapi"
+version = "0.1.0"
+description = "FastAPI template for PDM package"
+authors = [
+    { name = "Gabriel Nobrega", email = "gabrieltkdnobrega63@gmail.com" },
+]
+dependencies = [
+    "fastapi>=0.115.6",
+    "pydantic>=2.10.5",
+    "pydantic-settings>=2.7.1",
+]
+requires-python = ">=3.11.*"
+readme = "README.md"
+license = { text = "MIT" }
+
+
+[project.optional-dependencies]
+test = ["pytest>=8.3.4"]
+
+[tool.pdm]
+distribution = false
+
+[tool.pdm.scripts]
+start = { cmd = "uvicorn src.main:create_app --factory --host=0.0.0.0 --port=8000" }
+dev = { cmd = "uvicorn src.main:create_app --factory --reload --reload-dir=src" }
